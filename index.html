@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        display: flex;
+        justify-content: center;
+        gap: 300px;
+        flex-wrap: wrap;
+      }
+
+      .populationUsa-box {
+        width: 300px;
+        border: 2px solid #5607a0;
+        padding: 14px;
+      }
+
+      .photonat {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content"></div>
+    <script src="data.js"></script>
+    <script>
+      const dataJson = JSON.parse(dataInfo);
+      const infoContent = document.querySelector(".content");
+      dataJson.forEach((element) => {
+        const populationUsaBox = document.createElement("div");
+        populationUsaBox.classList.add("populationUsa-box");
+
+        const nationImg = document.createElement("img");
+        nationImg.classList.add("photonat");
+        nationImg.src =
+          "https://sun6-21.userapi.com/impg/VByKujtyu2E11lvC_J6HR0PLrJGy_ujgMmlL9Q/NJDny_MzwdE.jpg?size=0x160&crop=0.008,0.008,0.984,0.984&quality=95&sign=3ad984328bf2873cbb24395adb1843d1";
+        nationImg.setAttribute("alt", "photo");
+
+        const yearpop = document.createElement("h2");
+        yearpop.textContent = element.Year;
+
+        const populationNation = document.createElement("p");
+        populationNation.textContent = element.Population;
+
+        const populationWeb = document.createElement("a");
+        populationWeb.href = element.web_pages;
+        populationWeb.textContent = "ссылка";
+
+        populationUsaBox.appendChild(nationImg);
+        populationUsaBox.appendChild(yearpop);
+        populationUsaBox.appendChild(populationNation);
+        populationUsaBox.appendChild(populationWeb);
+        infoContent.appendChild(populationUsaBox);
+      });
+      //   const dataJson = JSON.parse(dataInfo);
+      //   dataJson.forEach((element) => {
+      //     console.log(`Год: ${element.Year} население: ${element.Population}`);
+      //   });
+    </script>
+  </body>
+</html>
